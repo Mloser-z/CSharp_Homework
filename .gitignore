@@ -3,9 +3,10 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
-
+!Homework01/
 # Other files and folders
 .settings/
+.idea
 
 # Executables
 *.swf
