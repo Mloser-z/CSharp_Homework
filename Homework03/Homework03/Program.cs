@@ -145,9 +145,9 @@ namespace Homework03
     {
         public static void Main(string[] args)
         {
+            Random rand = new Random();         // 随机数声明在循环外，防止重复
             for (int i = 1; i <= 10; i++)
             {
-                Random rand = new Random();
                 switch (rand.Next(0, 3))
                 {
                     case 0:
