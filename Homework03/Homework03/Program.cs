@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace Homework03
+﻿namespace Homework03
 {
     public interface IGetSize
     {
