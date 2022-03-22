@@ -22,6 +22,18 @@ namespace Homework05
                 TotalCost += detail.Cost;
             }
         }
+
+        public override string ToString()
+        {
+            String order;
+            order = "----" + Id + "----" + Customer + "----" + TotalCost + "----";
+            foreach (var detail in Data)
+            {
+                order += ("\n" + detail);
+            }
+
+            return order;
+        }
     }
 
     public class OrderDetails
@@ -35,6 +47,11 @@ namespace Homework05
             Name = name;
             Number = number;
             Cost = cost;
+        }
+
+        public override string ToString()
+        {
+            return Name + "     |      " + Number + "     |      " + Cost;
         }
     }
 }
