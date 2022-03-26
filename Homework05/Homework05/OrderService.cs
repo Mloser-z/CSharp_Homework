@@ -9,7 +9,7 @@ namespace Homework05
     [Serializable]
     public class OrderService
     {
-        private List<Order> orders;
+        public List<Order> orders;
 
         public OrderService()
         {

@@ -38,6 +38,18 @@ namespace Homework05
 
             return order;
         }
+
+        public override bool Equals(object obj)
+        {
+            var order = obj as Order;
+            bool flag = true;
+            return order != null && Id == order.Id && Customer==order.Customer && Data.Equals(order.Data);
+        }
+
+        public override int GetHashCode()
+        {
+            return 2108858624 + Id.GetHashCode();
+        }
     }
 
     public class OrderDetails
@@ -58,6 +70,18 @@ namespace Homework05
         public override string ToString()
         {
             return Name + "     |      " + Number + "     |      " + Cost;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var orderDetail = obj as OrderDetails;
+            return orderDetail != null && Name == orderDetail.Name && Number == orderDetail.Number &&
+                   Cost == orderDetail.Cost;
+        }
+
+        public override int GetHashCode()
+        {
+            return 785010553 + base.GetHashCode();
         }
     }
 }
