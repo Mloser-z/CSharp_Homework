@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace Homework05
 {
+    [Serializable]
     public class OrderService
     {
         private List<Order> orders;
@@ -12,6 +15,7 @@ namespace Homework05
         {
             orders = new List<Order>();
         }
+        
 
         // 查找order
         public Order FindById(int id)
@@ -151,6 +155,45 @@ namespace Homework05
             {
                 throw new Exception(e.Message + ": Can not change because no order is found");
             }
+        }
+
+        public void Export()
+        {
+            using (FileStream fs = new FileStream("orders.xml", FileMode.Create))
+            {
+                XmlSerializer xmlser = new XmlSerializer(typeof(Order[]));
+                Order[] xmlOrders = orders.ToArray();
+                xmlser.Serialize(fs, xmlOrders);
+            }
+        }
+
+        public void Import()
+        {
+            try
+            {
+                using (FileStream fs = new FileStream("orders.xml", FileMode.Open))
+                {
+                    XmlSerializer xmlser = new XmlSerializer(typeof(Order[]));
+                    Order[] xmlOrders = xmlser.Deserialize(fs) as Order[];
+                    if (xmlOrders == null)
+                    {
+                        throw new Exception("读取错误");
+                    }
+                    else
+                    {
+                        orders = xmlOrders.ToList();
+                    }
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                throw new Exception("文件不存在");
+            }
+            catch (Exception e)
+            {
+                throw new Exception("读取错误");
+            }
+            
         }
         
     }

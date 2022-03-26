@@ -11,6 +11,10 @@ namespace Homework05
         
         public int TotalCost { get; set; }
 
+        public Order()
+        {
+        }
+
         public Order(int id, String customer, List<OrderDetails> data)
         {
             Id = id;
@@ -42,6 +46,8 @@ namespace Homework05
         public int Number { get; set; }
         public int Cost { get; set; }
 
+        public OrderDetails() {}
+        
         public OrderDetails(String name, int number, int cost)
         {
             Name = name;
