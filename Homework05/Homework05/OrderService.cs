@@ -161,9 +161,8 @@ namespace Homework05
         {
             using (FileStream fs = new FileStream("orders.xml", FileMode.Create))
             {
-                XmlSerializer xmlser = new XmlSerializer(typeof(Order[]));
-                Order[] xmlOrders = orders.ToArray();
-                xmlser.Serialize(fs, xmlOrders);
+                XmlSerializer xmlser = new XmlSerializer(typeof(List<Order>));
+                xmlser.Serialize(fs, orders);
             }
         }
 
@@ -173,15 +172,15 @@ namespace Homework05
             {
                 using (FileStream fs = new FileStream("orders.xml", FileMode.Open))
                 {
-                    XmlSerializer xmlser = new XmlSerializer(typeof(Order[]));
-                    Order[] xmlOrders = xmlser.Deserialize(fs) as Order[];
+                    XmlSerializer xmlser = new XmlSerializer(typeof(List<Order>));
+                    List<Order> xmlOrders = (List<Order>)xmlser.Deserialize(fs);
                     if (xmlOrders == null)
                     {
                         throw new Exception("读取错误");
                     }
                     else
                     {
-                        orders = xmlOrders.ToList();
+                        orders = xmlOrders;
                     }
                 }
             }
