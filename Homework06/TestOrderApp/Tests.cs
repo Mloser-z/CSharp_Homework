@@ -2,6 +2,7 @@
 using Homework05;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace TestOrderApp
@@ -9,6 +10,14 @@ namespace TestOrderApp
     [TestFixture]
     public class Tests
     {
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        [SetUp]
+        public void Init()
+        {
+        }
+
         [Test]
         public void TestAdd()
         {
@@ -31,12 +40,13 @@ namespace TestOrderApp
                     new OrderDetails("sk", 242, 12)
                 })
             };
-            
+
             OrderService server = new OrderService();
             foreach (var test in tests)
             {
                 server.AddOrder(test.Customer, test.Data);
             }
+
             Assert.AreEqual(tests, server.orders);
         }
 
@@ -62,7 +72,7 @@ namespace TestOrderApp
                     new OrderDetails("sk", 242, 12)
                 })
             };
-            
+
             OrderService server = new OrderService();
             foreach (var test in tests)
             {
@@ -93,14 +103,14 @@ namespace TestOrderApp
                     new OrderDetails("sk", 242, 12)
                 })
             };
-            
+
             OrderService server = new OrderService();
             foreach (var test in tests)
             {
                 server.AddOrder(test.Customer, test.Data);
             }
 
-            IEnumerable<Order> an = new List<Order>(){tests[1], tests[0]};
+            IEnumerable<Order> an = new List<Order>() {tests[1], tests[0]};
             Assert.AreEqual(an, server.FindByCustomer("A"));
         }
 
@@ -126,7 +136,7 @@ namespace TestOrderApp
                     new OrderDetails("sk", 242, 12)
                 })
             };
-            
+
             OrderService server = new OrderService();
             foreach (var test in tests)
             {
@@ -161,7 +171,7 @@ namespace TestOrderApp
                     new OrderDetails("sk", 242, 12)
                 })
             };
-            
+
             OrderService server = new OrderService();
             foreach (var test in tests)
             {
@@ -170,11 +180,9 @@ namespace TestOrderApp
 
             OrderDetails changeAddDetail = new OrderDetails("table", 23, 2234);
             tests[0].Data.Add(changeAddDetail);
-            
+
             server.ChangeOrderAdd(0, changeAddDetail);
             Assert.AreEqual(tests, server.orders);
         }
-        
-        
     }
 }
