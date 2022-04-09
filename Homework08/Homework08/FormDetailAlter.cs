@@ -8,15 +8,14 @@ namespace Homework08
 {
     public partial class FormDetailAlter : Form
     {
-        public OrderDetails Details;
-        public string Iname;
-        
+        private List<OrderDetails> _orderDetailsList;
+
         public FormDetailAlter(List<OrderDetails> orderDetailsList)
         {
             InitializeComponent();
+            _orderDetailsList = orderDetailsList;
             cobox_name.DataSource = orderDetailsList;
             cobox_name.DisplayMember = "Name";
-            dataGridView1.DataSource = orderDetailsList.Where(d => d.Name == cobox_name.Text);
             try
             {
                 tbox_name.Text = orderDetailsList.Where(d => d.Name == cobox_name.Text).FirstOrDefault().Name;
@@ -37,11 +36,11 @@ namespace Homework08
         {
             try
             {
-                Iname = cobox_name.Text;
-                Details = new OrderDetails();
-                Details.Name = tbox_name.Text;
-                Details.Number = Convert.ToInt32(tbox_number.Text);
-                Details.Cost = Convert.ToInt32(tbox_cost.Text);
+                OrderDetails details = _orderDetailsList.Where(d=>d.Name == cobox_name.Text).First();
+                details.Name = tbox_name.Text;
+                details.Number = Convert.ToInt32(tbox_number.Text);
+                details.Cost = Convert.ToInt32(tbox_cost.Text);
+                DialogResult = DialogResult.OK;
                 Close();
             }
             catch (Exception err)
@@ -53,6 +52,11 @@ namespace Homework08
         private void bnt_cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cobox_name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First();
         }
     }
 }

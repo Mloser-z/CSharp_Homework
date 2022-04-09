@@ -54,7 +54,7 @@ namespace Homework08
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(414, 35);
+            this.panel1.Size = new System.Drawing.Size(416, 35);
             this.panel1.TabIndex = 0;
             // 
             // cobox_name
@@ -64,6 +64,7 @@ namespace Homework08
             this.cobox_name.Name = "cobox_name";
             this.cobox_name.Size = new System.Drawing.Size(104, 23);
             this.cobox_name.TabIndex = 1;
+            this.cobox_name.SelectedIndexChanged += new System.EventHandler(this.cobox_name_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -79,17 +80,17 @@ namespace Homework08
             this.panel2.Controls.Add(this.bnt_cancel);
             this.panel2.Controls.Add(this.bnt_delete);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 120);
+            this.panel2.Location = new System.Drawing.Point(0, 128);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(20, 2, 20, 2);
-            this.panel2.Size = new System.Drawing.Size(414, 33);
+            this.panel2.Size = new System.Drawing.Size(416, 33);
             this.panel2.TabIndex = 1;
             // 
             // bnt_cancel
             // 
             this.bnt_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bnt_cancel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bnt_cancel.Location = new System.Drawing.Point(277, 2);
+            this.bnt_cancel.Location = new System.Drawing.Point(279, 2);
             this.bnt_cancel.Name = "bnt_cancel";
             this.bnt_cancel.Size = new System.Drawing.Size(117, 29);
             this.bnt_cancel.TabIndex = 1;
@@ -117,7 +118,7 @@ namespace Homework08
             this.dataGridView1.Location = new System.Drawing.Point(0, 35);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(414, 85);
+            this.dataGridView1.Size = new System.Drawing.Size(416, 93);
             this.dataGridView1.TabIndex = 2;
             // 
             // name
@@ -142,7 +143,7 @@ namespace Homework08
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 153);
+            this.ClientSize = new System.Drawing.Size(416, 161);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

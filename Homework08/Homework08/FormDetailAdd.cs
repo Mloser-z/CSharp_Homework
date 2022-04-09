@@ -8,19 +8,22 @@ namespace Homework08
 {
     public partial class FormDetailAdd : Form
     {
-        public OrderDetails NewDetail;
+        private List<OrderDetails> _orderDetailsList;
 
-        public FormDetailAdd()
+        public FormDetailAdd(List<OrderDetails> orderDetailsList)
         {
             InitializeComponent();
+            _orderDetailsList = orderDetailsList;
         }
 
         private void bnt_ensure_Click(object sender, EventArgs e)
         {
             try
             {
-                NewDetail = new OrderDetails(tbox_name.Text, Convert.ToInt32(tbox_number.Text),
+                OrderDetails newDetail = new OrderDetails(tbox_name.Text, Convert.ToInt32(tbox_number.Text),
                     Convert.ToInt32(tbox_cost.Text));
+                _orderDetailsList.Add(newDetail);
+                DialogResult = DialogResult.OK;
                 Close();
             }
             catch (Exception err)

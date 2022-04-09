@@ -71,6 +71,7 @@ namespace Homework08
             this.cobox_name.Name = "cobox_name";
             this.cobox_name.Size = new System.Drawing.Size(144, 23);
             this.cobox_name.TabIndex = 1;
+            this.cobox_name.SelectedIndexChanged += new System.EventHandler(this.cobox_name_SelectedIndexChanged);
             // 
             // label1
             // 

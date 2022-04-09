@@ -49,16 +49,16 @@ namespace Homework08
 
         private void cobox_id_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tbox_cost.Text = _service.FindById(Convert.ToInt16(cobox_id.Text)).TotalCost.ToString();
-            dgv_detail.DataSource = _service.FindById(Convert.ToInt16(cobox_id.Text)).Data;
+            tbox_cost.Text = _service.FindById(Convert.ToInt32(cobox_id.Text)).TotalCost.ToString();
+            bs_detail.DataSource = _service.FindById(Convert.ToInt32(cobox_id.Text)).Data;
         }
 
         private void bnt_add_Click(object sender, EventArgs e)
         {
-            FormAdd formAdd = new FormAdd();
+            FormAdd formAdd = new FormAdd(_service);
             if (formAdd.ShowDialog() == DialogResult.OK)
             {
-                _service.AddOrder(formAdd.Customer, formAdd.OrderDetailsList);
+                bs_order.ResetBindings(false);
             }
         }
     }

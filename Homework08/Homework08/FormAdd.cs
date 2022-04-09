@@ -9,26 +9,21 @@ namespace Homework08
     public partial class FormAdd : Form
     {
         public List<OrderDetails> OrderDetailsList = new List<OrderDetails>();
-        public string Customer;
+        private OrderService _service;
         
-        public FormAdd()
+        public FormAdd(OrderService service)
         {
             InitializeComponent();
-            Init();
-        }
-
-        private void Init()
-        {
             bs_orderdetails.DataSource = OrderDetailsList;
+            _service = service;
         }
-
-
+        
         private void bnt_change_add_Click(object sender, EventArgs e)
         {
-            FormDetailAdd form = new FormDetailAdd();
+            FormDetailAdd form = new FormDetailAdd(OrderDetailsList);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                OrderDetailsList.Add(form.NewDetail);
+                bs_orderdetails.ResetBindings(false);
             }
             
         }
@@ -38,7 +33,7 @@ namespace Homework08
             FormDetailDelete form = new FormDetailDelete(OrderDetailsList);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                OrderDetailsList.Remove(OrderDetailsList.Where(d => d.Name == form.DName).First());
+                bs_orderdetails.ResetBindings(false);
             }
         }
 
@@ -47,16 +42,14 @@ namespace Homework08
             FormDetailAlter form = new FormDetailAlter(OrderDetailsList);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                OrderDetails p = OrderDetailsList.Where(d => d.Name == form.Iname).First();
-                p.Name = form.Details.Name;
-                p.Number = form.Details.Number;
-                p.Cost = form.Details.Cost;
+               bs_orderdetails.ResetBindings(false);
             }
         }
 
         private void bnt_ensure_Click(object sender, EventArgs e)
         {
-            Customer = tbox_name_add.Text;
+            _service.AddOrder(tbox_name_add.Text, OrderDetailsList);
+            DialogResult = DialogResult.OK;
             Close();
         }
 
