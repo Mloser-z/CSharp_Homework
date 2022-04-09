@@ -54,7 +54,7 @@ namespace Homework08
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(723, 71);
+            this.panel1.Size = new System.Drawing.Size(729, 71);
             this.panel1.TabIndex = 0;
             // 
             // tbox_cost
@@ -128,7 +128,7 @@ namespace Homework08
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 134);
+            this.ClientSize = new System.Drawing.Size(729, 158);
             this.Controls.Add(this.bnt_cancel);
             this.Controls.Add(this.bnt_ensure);
             this.Controls.Add(this.panel1);

@@ -53,6 +53,7 @@ namespace Homework08
             bs_detail.DataSource = _service.FindById(Convert.ToInt32(cobox_id.Text)).Data;
         }
 
+
         private void bnt_add_Click(object sender, EventArgs e)
         {
             FormAdd formAdd = new FormAdd(_service);
@@ -60,6 +61,43 @@ namespace Homework08
             {
                 bs_order.ResetBindings(false);
             }
+        }
+
+        private void bnt_change_Click(object sender, EventArgs e)
+        {
+            FormDetailAdd formDetailAdd = new FormDetailAdd(_service.FindById(Convert.ToInt32(cobox_id.Text)).Data);
+            if (formDetailAdd.ShowDialog() == DialogResult.OK)
+            {
+                bs_order.ResetBindings(false);
+                bs_detail.ResetBindings(false); 
+            }
+
+        }
+
+        private void bnt_change_alter_Click(object sender, EventArgs e)
+        {
+            FormDetailAlter formDetailAlter = new FormDetailAlter(_service.FindById(Convert.ToInt32(cobox_id.Text)).Data);
+            if (formDetailAlter.ShowDialog() == DialogResult.OK)
+            {
+                bs_order.ResetBindings(false);
+                bs_detail.ResetBindings(false); 
+            }
+        }
+
+        private void bnt_change_delete_Click(object sender, EventArgs e)
+        {
+            FormDetailDelete formDetailDelete =
+                new FormDetailDelete(_service.FindById(Convert.ToInt32(cobox_id.Text)).Data);
+            if (formDetailDelete.ShowDialog() == DialogResult.OK)
+            {
+                bs_detail.ResetBindings(false);
+                bs_order.ResetBindings(false);
+            }
+        }
+
+        private void bnt_quit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

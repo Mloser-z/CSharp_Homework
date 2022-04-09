@@ -45,9 +45,12 @@
             this.bs_detail = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bnt_quit = new System.Windows.Forms.Button();
+            this.bnt_change_delete = new System.Windows.Forms.Button();
+            this.bnt_change_alter = new System.Windows.Forms.Button();
             this.bnt_export = new System.Windows.Forms.Button();
             this.bnt_delete = new System.Windows.Forms.Button();
-            this.bnt_change = new System.Windows.Forms.Button();
+            this.bnt_change_add = new System.Windows.Forms.Button();
             this.bnt_add = new System.Windows.Forms.Button();
             this.bnt_import = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -68,7 +71,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 57);
+            this.panel1.Size = new System.Drawing.Size(834, 57);
             this.panel1.TabIndex = 0;
             // 
             // tbox_cost
@@ -131,7 +134,7 @@
             this.dgv_detail.Location = new System.Drawing.Point(0, 57);
             this.dgv_detail.Name = "dgv_detail";
             this.dgv_detail.RowTemplate.Height = 27;
-            this.dgv_detail.Size = new System.Drawing.Size(820, 473);
+            this.dgv_detail.Size = new System.Drawing.Size(834, 563);
             this.dgv_detail.TabIndex = 1;
             // 
             // name
@@ -160,20 +163,53 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.bnt_quit);
+            this.panel2.Controls.Add(this.bnt_change_delete);
+            this.panel2.Controls.Add(this.bnt_change_alter);
             this.panel2.Controls.Add(this.bnt_export);
             this.panel2.Controls.Add(this.bnt_delete);
-            this.panel2.Controls.Add(this.bnt_change);
+            this.panel2.Controls.Add(this.bnt_change_add);
             this.panel2.Controls.Add(this.bnt_add);
             this.panel2.Controls.Add(this.bnt_import);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 466);
+            this.panel2.Location = new System.Drawing.Point(0, 486);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(820, 64);
+            this.panel2.Size = new System.Drawing.Size(834, 134);
             this.panel2.TabIndex = 2;
+            // 
+            // bnt_quit
+            // 
+            this.bnt_quit.Location = new System.Drawing.Point(663, 83);
+            this.bnt_quit.Name = "bnt_quit";
+            this.bnt_quit.Size = new System.Drawing.Size(110, 30);
+            this.bnt_quit.TabIndex = 7;
+            this.bnt_quit.Text = "退出";
+            this.bnt_quit.UseVisualStyleBackColor = true;
+            this.bnt_quit.Click += new System.EventHandler(this.bnt_quit_Click);
+            // 
+            // bnt_change_delete
+            // 
+            this.bnt_change_delete.Location = new System.Drawing.Point(471, 83);
+            this.bnt_change_delete.Name = "bnt_change_delete";
+            this.bnt_change_delete.Size = new System.Drawing.Size(110, 30);
+            this.bnt_change_delete.TabIndex = 6;
+            this.bnt_change_delete.Text = "删除明细";
+            this.bnt_change_delete.UseVisualStyleBackColor = true;
+            this.bnt_change_delete.Click += new System.EventHandler(this.bnt_change_delete_Click);
+            // 
+            // bnt_change_alter
+            // 
+            this.bnt_change_alter.Location = new System.Drawing.Point(231, 83);
+            this.bnt_change_alter.Name = "bnt_change_alter";
+            this.bnt_change_alter.Size = new System.Drawing.Size(110, 30);
+            this.bnt_change_alter.TabIndex = 5;
+            this.bnt_change_alter.Text = "修改明细";
+            this.bnt_change_alter.UseVisualStyleBackColor = true;
+            this.bnt_change_alter.Click += new System.EventHandler(this.bnt_change_alter_Click);
             // 
             // bnt_export
             // 
-            this.bnt_export.Location = new System.Drawing.Point(631, 20);
+            this.bnt_export.Location = new System.Drawing.Point(663, 20);
             this.bnt_export.Name = "bnt_export";
             this.bnt_export.Size = new System.Drawing.Size(110, 30);
             this.bnt_export.TabIndex = 4;
@@ -182,25 +218,26 @@
             // 
             // bnt_delete
             // 
-            this.bnt_delete.Location = new System.Drawing.Point(477, 20);
+            this.bnt_delete.Location = new System.Drawing.Point(471, 20);
             this.bnt_delete.Name = "bnt_delete";
             this.bnt_delete.Size = new System.Drawing.Size(110, 30);
             this.bnt_delete.TabIndex = 3;
             this.bnt_delete.Text = "删除订单";
             this.bnt_delete.UseVisualStyleBackColor = true;
             // 
-            // bnt_change
+            // bnt_change_add
             // 
-            this.bnt_change.Location = new System.Drawing.Point(327, 20);
-            this.bnt_change.Name = "bnt_change";
-            this.bnt_change.Size = new System.Drawing.Size(110, 30);
-            this.bnt_change.TabIndex = 2;
-            this.bnt_change.Text = "修改订单";
-            this.bnt_change.UseVisualStyleBackColor = true;
+            this.bnt_change_add.Location = new System.Drawing.Point(23, 83);
+            this.bnt_change_add.Name = "bnt_change_add";
+            this.bnt_change_add.Size = new System.Drawing.Size(110, 30);
+            this.bnt_change_add.TabIndex = 2;
+            this.bnt_change_add.Text = "添加明细";
+            this.bnt_change_add.UseVisualStyleBackColor = true;
+            this.bnt_change_add.Click += new System.EventHandler(this.bnt_change_Click);
             // 
             // bnt_add
             // 
-            this.bnt_add.Location = new System.Drawing.Point(177, 20);
+            this.bnt_add.Location = new System.Drawing.Point(231, 20);
             this.bnt_add.Name = "bnt_add";
             this.bnt_add.Size = new System.Drawing.Size(110, 30);
             this.bnt_add.TabIndex = 1;
@@ -221,7 +258,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 530);
+            this.ClientSize = new System.Drawing.Size(834, 620);
+            this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgv_detail);
             this.Controls.Add(this.panel1);
@@ -235,6 +273,10 @@
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button bnt_change_alter;
+        private System.Windows.Forms.Button bnt_change_delete;
+        private System.Windows.Forms.Button bnt_quit;
 
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn number;
@@ -253,7 +295,7 @@
 
         private System.Windows.Forms.Button bnt_import;
         private System.Windows.Forms.Button bnt_add;
-        private System.Windows.Forms.Button bnt_change;
+        private System.Windows.Forms.Button bnt_change_add;
         private System.Windows.Forms.Button bnt_delete;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cobox_id;

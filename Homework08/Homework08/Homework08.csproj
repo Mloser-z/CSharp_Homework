@@ -52,6 +52,12 @@
         <Compile Include="FormAdd.Designer.cs">
           <DependentUpon>FormAdd.cs</DependentUpon>
         </Compile>
+        <Compile Include="FormChange.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="FormChange.Designer.cs">
+          <DependentUpon>FormChange.cs</DependentUpon>
+        </Compile>
         <Compile Include="FormDetailAdd.cs">
           <SubType>Form</SubType>
         </Compile>

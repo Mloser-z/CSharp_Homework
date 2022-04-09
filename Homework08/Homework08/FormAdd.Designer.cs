@@ -61,7 +61,7 @@ namespace Homework08
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(830, 48);
+            this.panel1.Size = new System.Drawing.Size(836, 48);
             this.panel1.TabIndex = 0;
             // 
             // tbox_name_add
@@ -89,7 +89,7 @@ namespace Homework08
             this.dataGridView1.Location = new System.Drawing.Point(0, 48);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(830, 350);
+            this.dataGridView1.Size = new System.Drawing.Size(836, 374);
             this.dataGridView1.TabIndex = 1;
             // 
             // name
@@ -115,17 +115,17 @@ namespace Homework08
             this.panel2.Controls.Add(this.bnt_cancel);
             this.panel2.Controls.Add(this.bnt_ensure);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 365);
+            this.panel2.Location = new System.Drawing.Point(0, 389);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(20, 2, 20, 2);
-            this.panel2.Size = new System.Drawing.Size(830, 33);
+            this.panel2.Size = new System.Drawing.Size(836, 33);
             this.panel2.TabIndex = 2;
             // 
             // bnt_cancel
             // 
             this.bnt_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bnt_cancel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bnt_cancel.Location = new System.Drawing.Point(680, 2);
+            this.bnt_cancel.Location = new System.Drawing.Point(686, 2);
             this.bnt_cancel.Name = "bnt_cancel";
             this.bnt_cancel.Size = new System.Drawing.Size(130, 29);
             this.bnt_cancel.TabIndex = 1;
@@ -151,10 +151,10 @@ namespace Homework08
             this.panel3.Controls.Add(this.bnt_change_delete);
             this.panel3.Controls.Add(this.bnt_change_add);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 327);
+            this.panel3.Location = new System.Drawing.Point(0, 351);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(2);
-            this.panel3.Size = new System.Drawing.Size(830, 38);
+            this.panel3.Size = new System.Drawing.Size(836, 38);
             this.panel3.TabIndex = 3;
             // 
             // bnt_change_alter
@@ -191,7 +191,7 @@ namespace Homework08
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 398);
+            this.ClientSize = new System.Drawing.Size(836, 422);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
