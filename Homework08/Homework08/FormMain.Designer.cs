@@ -71,7 +71,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 57);
+            this.panel1.Size = new System.Drawing.Size(836, 57);
             this.panel1.TabIndex = 0;
             // 
             // tbox_cost
@@ -134,7 +134,7 @@
             this.dgv_detail.Location = new System.Drawing.Point(0, 57);
             this.dgv_detail.Name = "dgv_detail";
             this.dgv_detail.RowTemplate.Height = 27;
-            this.dgv_detail.Size = new System.Drawing.Size(834, 563);
+            this.dgv_detail.Size = new System.Drawing.Size(836, 571);
             this.dgv_detail.TabIndex = 1;
             // 
             // name
@@ -172,9 +172,9 @@
             this.panel2.Controls.Add(this.bnt_add);
             this.panel2.Controls.Add(this.bnt_import);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 486);
+            this.panel2.Location = new System.Drawing.Point(0, 494);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(834, 134);
+            this.panel2.Size = new System.Drawing.Size(836, 134);
             this.panel2.TabIndex = 2;
             // 
             // bnt_quit
@@ -224,6 +224,7 @@
             this.bnt_delete.TabIndex = 3;
             this.bnt_delete.Text = "删除订单";
             this.bnt_delete.UseVisualStyleBackColor = true;
+            this.bnt_delete.Click += new System.EventHandler(this.bnt_delete_Click);
             // 
             // bnt_change_add
             // 
@@ -253,12 +254,13 @@
             this.bnt_import.TabIndex = 0;
             this.bnt_import.Text = "导入订单";
             this.bnt_import.UseVisualStyleBackColor = true;
+            this.bnt_import.Click += new System.EventHandler(this.bnt_import_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 620);
+            this.ClientSize = new System.Drawing.Size(836, 628);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgv_detail);

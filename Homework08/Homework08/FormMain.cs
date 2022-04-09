@@ -13,15 +13,24 @@ namespace Homework08
 {
     public partial class FormMain : Form
     {
-        private OrderService _service;
+        private OrderService _service = new OrderService();
 
         public FormMain()
         {
-            InitializeComponent();
-            _service = new OrderService();
-            test();
-            Init_bs();
-
+            try
+            {
+                _service.Import();
+            }
+            catch (Exception)
+            {
+                
+            }
+            finally
+            {
+                InitializeComponent();
+                test();
+                Init_bs();
+            }
         }
 
         // test
@@ -97,7 +106,20 @@ namespace Homework08
 
         private void bnt_quit_Click(object sender, EventArgs e)
         {
+            _service.Export();
             Close();
+        }
+
+        private void bnt_import_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void bnt_delete_Click(object sender, EventArgs e)
+        {
+            _service.Delete(Convert.ToInt32(cobox_id.Text));
+            bs_order.ResetBindings(false);
+            bs_detail.ResetBindings(false);
         }
     }
 }
