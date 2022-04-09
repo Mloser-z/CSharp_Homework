@@ -31,6 +31,7 @@ namespace Homework08
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cobox_name = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,9 +42,11 @@ namespace Homework08
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -54,7 +57,7 @@ namespace Homework08
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(416, 35);
+            this.panel1.Size = new System.Drawing.Size(662, 35);
             this.panel1.TabIndex = 0;
             // 
             // cobox_name
@@ -80,17 +83,17 @@ namespace Homework08
             this.panel2.Controls.Add(this.bnt_cancel);
             this.panel2.Controls.Add(this.bnt_delete);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 128);
+            this.panel2.Location = new System.Drawing.Point(0, 168);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(20, 2, 20, 2);
-            this.panel2.Size = new System.Drawing.Size(416, 33);
+            this.panel2.Size = new System.Drawing.Size(662, 33);
             this.panel2.TabIndex = 1;
             // 
             // bnt_cancel
             // 
             this.bnt_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.bnt_cancel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.bnt_cancel.Location = new System.Drawing.Point(279, 2);
+            this.bnt_cancel.Location = new System.Drawing.Point(525, 2);
             this.bnt_cancel.Name = "bnt_cancel";
             this.bnt_cancel.Size = new System.Drawing.Size(117, 29);
             this.bnt_cancel.TabIndex = 1;
@@ -112,13 +115,15 @@ namespace Homework08
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {this.name, this.number, this.cost});
+            this.dataGridView1.DataSource = this.bindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 35);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(416, 93);
+            this.dataGridView1.Size = new System.Drawing.Size(662, 133);
             this.dataGridView1.TabIndex = 2;
             // 
             // name
@@ -143,17 +148,21 @@ namespace Homework08
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 161);
+            this.ClientSize = new System.Drawing.Size(662, 201);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FormDetailDelete";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormDetailDelete";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.BindingSource bindingSource1;
 
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn number;

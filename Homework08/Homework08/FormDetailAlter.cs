@@ -14,14 +14,14 @@ namespace Homework08
         {
             InitializeComponent();
             _orderDetailsList = orderDetailsList;
-            cobox_name.DataSource = orderDetailsList;
+            cobox_name.DataSource = _orderDetailsList;
             cobox_name.DisplayMember = "Name";
             try
             {
-                tbox_name.Text = orderDetailsList.Where(d => d.Name == cobox_name.Text).FirstOrDefault().Name;
-                tbox_number.Text = orderDetailsList.Where(d => d.Name == cobox_name.Text).FirstOrDefault().Number
+                tbox_name.Text = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First().Name;
+                tbox_number.Text = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First().Number
                     .ToString();
-                tbox_cost.Text = orderDetailsList.Where(d => d.Name == cobox_name.Text).FirstOrDefault().Cost
+                tbox_cost.Text = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First().Cost
                     .ToString();
             }
             catch (Exception e)
@@ -56,7 +56,11 @@ namespace Homework08
 
         private void cobox_name_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First();
+            tbox_name.Text = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First().Name;
+            tbox_number.Text = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First().Number
+                .ToString();
+            tbox_cost.Text = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First().Cost
+                .ToString();
         }
     }
 }

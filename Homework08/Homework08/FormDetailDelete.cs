@@ -16,6 +16,7 @@ namespace Homework08
             _orderDetailsList = orderDetailsList;
             cobox_name.DataSource = orderDetailsList;
             cobox_name.DisplayMember = "Name";
+            
         }
 
         private void bnt_delete_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace Homework08
 
         private void cobox_name_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First();
+            bindingSource1.DataSource = _orderDetailsList.Where(d => d.Name == cobox_name.Text).First();
         }
     }
 }
