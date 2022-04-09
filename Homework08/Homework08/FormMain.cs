@@ -33,7 +33,7 @@ namespace Homework08
             }
         }
 
-        // test
+        // test for init
         private void test()
         {
             _service.AddOrder("A",
