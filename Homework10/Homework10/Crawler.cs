@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,10 +19,10 @@ namespace Homework10
         public event Action<Crawler, string, string> PageDownloaded;
 
         //待下载队列
-        Queue<string> pending = new Queue<string>();
+        ConcurrentQueue<string> pending = new ConcurrentQueue<string>();
 
         //已下载网页
-        public Dictionary<string, bool> Downloaded { get; } = new Dictionary<string, bool>();
+        public ConcurrentDictionary<string, bool> Downloaded { get; } = new ConcurrentDictionary<string, bool>();
 
         //URL检测表达式，用于在HTML文本中查找URL
         public static readonly string UrlDetectRegex = @"(href|HREF)[]*=[]*[""'](?<url>[^""'#>]+)[""']";
@@ -52,29 +52,52 @@ namespace Homework10
             HtmlEncoding = Encoding.UTF8;
         }
 
-        public void Start()
+        public void ClearPending()
+        {
+            while (!pending.IsEmpty)
+            {
+                pending.TryDequeue(out string url);
+            }
+        }
+
+        public void Init()
         {
             Downloaded.Clear();
-            pending.Clear();
+            ClearPending();
             pending.Enqueue(StartURL);
+        }
 
+        public void Start()
+        {
             while (Downloaded.Count < MaxPage && pending.Count > 0)
             {
-                string url = pending.Dequeue();
+                string url;
+                while (!pending.TryDequeue(out url))
+                {
+                }
+
                 try
                 {
                     string html = DownLoad(url); // 下载
                     Downloaded[url] = true;
-                    PageDownloaded(this, url, "success");
+                    
+                    lock (PageDownloaded)
+                    {
+                        PageDownloaded(this, url, "success");
+                    }
+                    
                     Parse(html, url); //解析,并加入新的链接
                 }
                 catch (Exception ex)
                 {
-                    PageDownloaded(this, url, "  Error:" + ex.Message);
+                    lock (PageDownloaded)
+                    {
+                        PageDownloaded(this, url, "  Error:" + ex.Message);
+                    }
                 }
             }
 
-            CrawlerStopped(this);
+            //CrawlerStopped(this);
         }
 
         private string DownLoad(string url)
