@@ -51,7 +51,7 @@ namespace Homework10
             crawler.HostFilter = "^" + host + "$";
             crawler.FileFilter = ".(html?|aspx|jsp|php)$|^[^.]*$";
             crawler.Init();
-            Task.Run(() => crawler.Start());
+            Task.Run(() => crawler.Init());
             lblInfo.Text = "爬虫已启动....";
 
         }

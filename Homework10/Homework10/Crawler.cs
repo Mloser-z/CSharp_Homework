@@ -65,35 +65,36 @@ namespace Homework10
             Downloaded.Clear();
             ClearPending();
             pending.Enqueue(StartURL);
+            string url;
+            while ( Downloaded.Count < MaxPage && pending.Count > 0)
+            {
+                if (pending.TryDequeue(out url))
+                {
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(Start), url);
+                    Thread.Sleep(100);
+                }
+            }
         }
 
-        public void Start()
+        public void Start(object url)
         {
-            while (Downloaded.Count < MaxPage && pending.Count > 0)
+            try
             {
-                string url;
-                while (!pending.TryDequeue(out url))
+                string html = DownLoad(url.ToString()); // 下载
+                Downloaded[url.ToString()] = true;
+
+                lock (PageDownloaded)
                 {
+                    PageDownloaded(this, url.ToString(), "success");
                 }
 
-                try
+                Parse(html, url.ToString()); //解析,并加入新的链接
+            }
+            catch (Exception ex)
+            {
+                lock (PageDownloaded)
                 {
-                    string html = DownLoad(url); // 下载
-                    Downloaded[url] = true;
-                    
-                    lock (PageDownloaded)
-                    {
-                        PageDownloaded(this, url, "success");
-                    }
-                    
-                    Parse(html, url); //解析,并加入新的链接
-                }
-                catch (Exception ex)
-                {
-                    lock (PageDownloaded)
-                    {
-                        PageDownloaded(this, url, "  Error:" + ex.Message);
-                    }
+                    PageDownloaded(this, url.ToString(), "  Error:" + ex.Message);
                 }
             }
 
