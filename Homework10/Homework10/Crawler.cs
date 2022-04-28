@@ -68,12 +68,19 @@ namespace Homework10
             string url;
             while ( Downloaded.Count < MaxPage && pending.Count > 0)
             {
-                if (pending.TryDequeue(out url))
+                for (int i = 0; i < pending.Count; i++)
                 {
-                    ThreadPool.QueueUserWorkItem(new WaitCallback(Start), url);
-                    Thread.Sleep(100);
+                    if (pending.TryDequeue(out url))
+                    {
+                        Downloaded[url] = true;
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(Start), url);
+                    }
                 }
+                Thread.Sleep(1000);
+                
             }
+
+            CrawlerStopped(this);
         }
 
         public void Start(object url)
@@ -81,8 +88,7 @@ namespace Homework10
             try
             {
                 string html = DownLoad(url.ToString()); // 下载
-                Downloaded[url.ToString()] = true;
-
+                
                 lock (PageDownloaded)
                 {
                     PageDownloaded(this, url.ToString(), "success");
