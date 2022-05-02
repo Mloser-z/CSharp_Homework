@@ -103,8 +103,6 @@ namespace Homework10
                     PageDownloaded(this, url.ToString(), "  Error:" + ex.Message);
                 }
             }
-
-            //CrawlerStopped(this);
         }
 
         private string DownLoad(string url)
