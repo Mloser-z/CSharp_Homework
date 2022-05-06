@@ -9,13 +9,13 @@ namespace Homework11
     public partial class FormAdd : Form
     {
         public List<OrderDetail> OrderDetails = new List<OrderDetail>();
-        public int OrderId;
+        public long OrderId;
 
         public FormAdd()
         {
             InitializeComponent();
             bs_orderdetails.DataSource = OrderDetails;
-            OrderId = Convert.ToInt32(DateTime.Now.ToString("yyyyMMddHHmmss"));
+            OrderId = Convert.ToInt64(DateTime.Now.ToString("yyMMddHHmmss"));
         }
         
         private void bnt_change_add_Click(object sender, EventArgs e)

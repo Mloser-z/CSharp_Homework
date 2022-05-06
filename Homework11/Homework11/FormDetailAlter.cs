@@ -9,9 +9,9 @@ namespace Homework11
     public partial class FormDetailAlter : Form
     {
         private List<OrderDetail> _orderDetails;
-        private int _orderId;
+        private long _orderId;
 
-        public FormDetailAlter(int orderId, List<OrderDetail> orderDetails)
+        public FormDetailAlter(long orderId, List<OrderDetail> orderDetails)
         {
             InitializeComponent();
             _orderId = orderId;

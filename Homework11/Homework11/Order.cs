@@ -6,7 +6,7 @@ namespace Homework11
 {
     public class Order
     {
-        public int OrderId { get; set; }
+        public long OrderId { get; set; }
         [Required]
         public String Customer { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
@@ -24,7 +24,7 @@ namespace Homework11
         [Required]
         public int Cost { get; set; }
 
-        public int OrderId { get; set; }
+        public long OrderId { get; set; }
         public Order Order { get; set; }
         
     }

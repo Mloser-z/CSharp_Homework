@@ -8,11 +8,11 @@ namespace Homework11
 {
     public partial class FormDetailAdd : Form
     {
-        private int _orderId;
+        private long _orderId;
 
         public OrderDetail DetailAdd;
         
-        public FormDetailAdd(int orderId)
+        public FormDetailAdd(long orderId)
         {
             InitializeComponent();
             _orderId = orderId;

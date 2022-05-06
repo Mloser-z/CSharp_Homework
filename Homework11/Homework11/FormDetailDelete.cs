@@ -9,9 +9,9 @@ namespace Homework11
     public partial class FormDetailDelete : Form
     {
         private List<OrderDetail> _orderDetailsList;
-        private int _orderId;
+        private long _orderId;
 
-        public FormDetailDelete(int orderId, List<OrderDetail> orderDetailsList)
+        public FormDetailDelete(long orderId, List<OrderDetail> orderDetailsList)
         {
             InitializeComponent();
             _orderId = orderId;

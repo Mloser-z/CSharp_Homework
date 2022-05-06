@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -7,6 +8,8 @@ namespace Homework11
 {
     public partial class FormMain : Form
     {
+        private List<Order> _orders;
+
         public FormMain()
         {
             
@@ -18,8 +21,8 @@ namespace Homework11
         {
             using (var db = new OrderContext())
             {
-                IQueryable orders = db.Orders.Where(o=>true);
-                bs_order.DataSource = orders;
+                _orders = db.Orders.Where(o=>true).ToList();
+                bs_order.DataSource = _orders;
                 cobox_id.DisplayMember = "OrderId";
                 cobox_customer.DisplayMember = "Customer";
             }
@@ -31,37 +34,47 @@ namespace Homework11
             using (var db = new OrderContext())
             {
                 tbox_cost.Text = db.Orders
-                    .Single(o=>o.OrderId == Convert.ToInt32(cobox_id.Text)).TotalCost.ToString();
+                    .Single(o=>o.OrderId == Convert.ToInt64(cobox_id.Text)).TotalCost.ToString();
                 
                 bs_detail.DataSource = db.Orders
-                    .Single(o=>o.OrderId == Convert.ToInt32(cobox_id.Text)).OrderDetails;;
+                    .Single(o=>o.OrderId == Convert.ToInt64(cobox_id.Text)).OrderDetails;;
             }
             
         }
 
+
+        private void UpDateCobox()
+        {
+            using (var db = new OrderContext())
+            {
+                _orders = db.Orders.Where(o=>true).ToList();
+                bs_order.ResetBindings(false);
+            }
+        }
 
         private void bnt_add_Click(object sender, EventArgs e)
         {
             FormAdd formAdd = new FormAdd();
             if (formAdd.ShowDialog() == DialogResult.OK)
             {
-                bs_order.ResetBindings(false);
+                UpDateCobox();
             }
         }
 
         private void bnt_change_Click(object sender, EventArgs e)
         {
-            FormDetailAdd formDetailAdd = new FormDetailAdd(Convert.ToInt32(cobox_id.Text));
+            FormDetailAdd formDetailAdd = new FormDetailAdd(Convert.ToInt64(cobox_id.Text));
             if (formDetailAdd.ShowDialog() == DialogResult.OK)
             {
-                bs_order.ResetBindings(false);
+                UpDateCobox();
+                // bs_order.ResetBindings(false);
                 bs_detail.ResetBindings(false); 
             }
         }
 
         private void bnt_change_alter_Click(object sender, EventArgs e)
         {
-            FormDetailAlter formDetailAlter = new FormDetailAlter(Convert.ToInt32(cobox_id.Text), null);
+            FormDetailAlter formDetailAlter = new FormDetailAlter(Convert.ToInt64(cobox_id.Text), null);
             if (formDetailAlter.ShowDialog() == DialogResult.OK)
             {
                 bs_order.ResetBindings(false);
@@ -72,7 +85,7 @@ namespace Homework11
         private void bnt_change_delete_Click(object sender, EventArgs e)
         {
             FormDetailDelete formDetailDelete =
-                new FormDetailDelete(Convert.ToInt32(cobox_id.Text), null);
+                new FormDetailDelete(Convert.ToInt64(cobox_id.Text), null);
             if (formDetailDelete.ShowDialog() == DialogResult.OK)
             {
                 bs_detail.ResetBindings(false);
@@ -94,11 +107,13 @@ namespace Homework11
         {
             using (var db = new OrderContext())
             {
-                Order order = db.Orders.Include("OrderDetails").Single(o => o.OrderId == Convert.ToInt32(cobox_id.Text));
+                Order order = db.Orders.Include("OrderDetails").Single(o => o.OrderId == Convert.ToInt64(cobox_id.Text));
                 db.Orders.Remove(order);
                 db.SaveChanges();
             }
-            bs_order.ResetBindings(false);
+            
+            UpDateCobox();
+            // bs_order.ResetBindings(false);
             bs_detail.ResetBindings(false);
         }
         
