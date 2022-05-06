@@ -36,7 +36,7 @@ namespace Homework11
                 tbox_cost.Text = db.Orders
                     .Single(o=>o.OrderId == id).TotalCost.ToString();
                 
-                bs_detail.DataSource = db.Orders
+                bs_detail.DataSource = db.Orders.Include("OrderDetails")
                     .Single(o=>o.OrderId == id).OrderDetails;;
             }
             

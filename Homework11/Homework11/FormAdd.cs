@@ -74,14 +74,7 @@ namespace Homework11
 
         private void bnt_cancel_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Close();
-            }
-            finally
-            {
-                Close();
-            }
+            Close();
             
         }
     }
