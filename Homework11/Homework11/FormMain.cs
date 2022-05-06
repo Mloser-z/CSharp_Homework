@@ -8,7 +8,6 @@ namespace Homework11
 {
     public partial class FormMain : Form
     {
-        private List<Order> _orders;
 
         public FormMain()
         {
@@ -21,8 +20,8 @@ namespace Homework11
         {
             using (var db = new OrderContext())
             {
-                _orders = db.Orders.Where(o=>true).ToList();
-                bs_order.DataSource = _orders;
+                List<Order> orders = db.Orders.Where(o=>true).ToList();
+                bs_order.DataSource = orders;
                 cobox_id.DisplayMember = "OrderId";
                 cobox_customer.DisplayMember = "Customer";
             }
@@ -33,11 +32,12 @@ namespace Homework11
         {
             using (var db = new OrderContext())
             {
+                long id = Convert.ToInt64(cobox_id.Text);
                 tbox_cost.Text = db.Orders
-                    .Single(o=>o.OrderId == Convert.ToInt64(cobox_id.Text)).TotalCost.ToString();
+                    .Single(o=>o.OrderId == id).TotalCost.ToString();
                 
                 bs_detail.DataSource = db.Orders
-                    .Single(o=>o.OrderId == Convert.ToInt64(cobox_id.Text)).OrderDetails;;
+                    .Single(o=>o.OrderId == id).OrderDetails;;
             }
             
         }
@@ -47,8 +47,8 @@ namespace Homework11
         {
             using (var db = new OrderContext())
             {
-                _orders = db.Orders.Where(o=>true).ToList();
-                bs_order.ResetBindings(false);
+                List<Order> orders = db.Orders.Where(o=>true).ToList();
+                bs_order.ResetBindings(true);
             }
         }
 
@@ -107,7 +107,8 @@ namespace Homework11
         {
             using (var db = new OrderContext())
             {
-                Order order = db.Orders.Include("OrderDetails").Single(o => o.OrderId == Convert.ToInt64(cobox_id.Text));
+                long id = Convert.ToInt64(cobox_id.Text);
+                Order order = db.Orders.Include("OrderDetails").Single(o => o.OrderId == id);
                 db.Orders.Remove(order);
                 db.SaveChanges();
             }

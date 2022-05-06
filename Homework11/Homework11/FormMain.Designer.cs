@@ -39,6 +39,9 @@
             this.cobox_id = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_detail = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bs_detail = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridTextBoxColumn1 = new System.Windows.Forms.DataGridTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -125,6 +128,7 @@
             // 
             this.dgv_detail.AutoGenerateColumns = false;
             this.dgv_detail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_detail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {this.name, this.number, this.cost});
             this.dgv_detail.DataSource = this.bs_detail;
             this.dgv_detail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_detail.Location = new System.Drawing.Point(0, 57);
@@ -132,6 +136,21 @@
             this.dgv_detail.RowTemplate.Height = 27;
             this.dgv_detail.Size = new System.Drawing.Size(838, 579);
             this.dgv_detail.TabIndex = 1;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            // 
+            // number
+            // 
+            this.number.HeaderText = "Number";
+            this.number.Name = "number";
+            // 
+            // cost
+            // 
+            this.cost.HeaderText = "Cost";
+            this.cost.Name = "cost";
             // 
             // dataGridTextBoxColumn1
             // 
