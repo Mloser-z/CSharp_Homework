@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Homework11
 {
     public class Order
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long OrderId { get; set; }
         [Required]
         public String Customer { get; set; }
@@ -17,7 +19,7 @@ namespace Homework11
 
     public class OrderDetail
     {
-        [Key]
+        public int Id { get; set; }
         public String Name { get; set; }
         [Required]
         public int Number { get; set; }
